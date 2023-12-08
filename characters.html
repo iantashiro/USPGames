@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Selection</title>
+    <style>
+        body {
+            background-color: black;
+            color: yellow;
+            text-align: center;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .column {
+            flex: 0 0 45%;
+        }
+
+        .team {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .character-group {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .character {
+            flex: 0 0 30%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .character img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 5px;
+            cursor: pointer;
+        }
+
+        .character-name {
+            font-size: 14px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<script>
+    const characterNamesLeft =  ["Raul Abramo", "Marcos Lima", "Élcio Abdalla"
+    ,"Matthew Luzum","Frederique Grassi", "Marina Nielsen"
+    ,"Alexandre Suaide","Nelson Carlin","Marco Bregant"
+    ,"Airton Deppman","Marcelo Munhoz","Manoel Robilotta"
+    ,"Domingos Marchetti","João Barata","Walter Pedra"
+    ,"Elisabete Dal Pino","Jane Heten","Paula Coelho"
+    ,"Silvio Salinas","Silvio Salinas","Silvio Salinas"];
+    
+    const characterNamesRight =  ["Renata Funchal","Enrico Bertuzzo", "Oscar Éboli"
+    ,"Victor Rivelles", "Diego Trancanelli", "Jorge de Lyra"
+    ,"Gabriel Landi","Nestor Caticha","Carlos Fiore"
+    ,"Antonio Piza","Arnaldo Gammal", "Paulo Nussenzveig"
+    ,"Claudio Possani","Orlando Stanley","Odilon Luciano"
+    ,"Laerte Sodré","Rodrigo Nemmen","Ramachrisna Teixeira"
+    ,"Hugo","Hugo","Hugo"];
+
+    const characterImagesLeft =  ["https://i.imgur.com/yKXHpKQb.jpg", "https://i.imgur.com/dNqrPx7b.jpg", "https://i.imgur.com/kLm4PQtb.jpg"
+    , "https://i.imgur.com/yaMmxYYb.jpg","https://i.imgur.com/1XJjV9Nb.jpg","https://i.imgur.com/OB0IVirb.jpg"
+    , "https://i.imgur.com/GnlGp4ab.jpg","https://i.imgur.com/zFhLzLMb.jpg","https://i.imgur.com/uVmal0ob.jpg"
+    , "https://i.imgur.com/abpdbhHb.jpg","https://i.imgur.com/gIsAUvGb.jpg","https://i.imgur.com/NxkpYrns.png"
+    ,"https://i.imgur.com/GajxzeP.jpg","https://i.imgur.com/96yNuMb.jpg","https://i.imgur.com/r4ve0aX.jpg"
+    ,"https://i.imgur.com/XPGck1a.jpg","https://i.imgur.com/r4qkMyz.jpg","https://i.imgur.com/0ZmVi6j.jpg"
+    ,"https://i.imgur.com/PoZOUhy.jpg","https://i.imgur.com/U97WJ4P.jpg","https://i.imgur.com/o6IkGOa.jpg"];
+    
+    const characterImagesRight =  ["https://i.imgur.com/tFMNbVOb.jpg","https://i.imgur.com/cEydoIub.jpg","https://i.imgur.com/GHpddwnb.jpg"
+    , "https://i.imgur.com/XZVPXY0b.jpg","https://i.imgur.com/khKdHRob.jpg","https://i.imgur.com/4U5etWHs.png"
+    , "https://i.imgur.com/gdqt1ZUb.jpg","https://i.imgur.com/iqQCusLb.jpg","https://i.imgur.com/pUmPFmMb.jpg"
+    , "https://i.imgur.com/YXjm66bb.jpg","https://i.imgur.com/1DakWMjb.jpg","https://i.imgur.com/vANJ9s7b.jpg"
+    ,"https://i.imgur.com/TFuUQok.jpg","https://i.imgur.com/5tP8ayL.png","https://i.imgur.com/zIlP9dT.jpg"
+    ,"https://i.imgur.com/pxj0H0n.jpg","https://i.imgur.com/gbAEndK.jpg","https://i.imgur.com/yc7XHWH.jpg"
+    ,"https://i.imgur.com/LHzSFIU.jpg","https://i.imgur.com/LHzSFIU.jpg","https://i.imgur.com/LHzSFIU.jpg"];
+    
+    const characterDepartments =  ["Cosmology", "Particle Physics","Quantum Chromodynamics","Quantum Field Theory","Nuclear Physics (E)","Statistical Mechanics","Nuclear Physics (T)","Molecular Physics","Mathematical Physics","Mathematics","Astrophysics","Astrophysics","Demigods","Gods"]
+    
+    
+</script>
+
+<script>
+    const charactersPerRow = 3;
+
+    document.write('<div class="column">');
+    for (let i = 0; i < characterNamesLeft.length; i += charactersPerRow) {
+        document.write('<div class="character-group">');
+
+        for (let j = i; j < i + charactersPerRow && j < characterNamesLeft.length; j++) {
+            const characterName = characterNamesLeft[j];
+            const characterImage = characterImagesLeft[j];
+
+            document.write(`
+                <div class="character">
+                    <a href="confirm.html?name=${encodeURIComponent(characterName)}">
+                        <img src="${characterImage}" alt="${characterName}">
+                        <div class="character-name">${characterName}</div>
+                    </a>
+                </div>
+            `);
+        }
+
+        document.write('</div>');
+    }
+    document.write('</div>');
+
+    // Right Column
+	document.write('<div class="column">');
+	for (let i = 0; i < characterNamesRight.length; i += charactersPerRow) {
+		document.write('<div class="character-group">');
+
+		for (let j = i; j < i + charactersPerRow && j < characterNamesRight.length; j++) {
+		    const characterName = characterNamesRight[j];
+		    const characterImage = characterImagesRight[j];
+
+		    document.write(`
+		        <div class="character">
+		            <a href="confirm.html?name=${encodeURIComponent(characterName)}">
+		                <img src="${characterImage}" alt="${characterName}">
+		                <div class="character-name">${characterName}</div>
+		            </a>
+		        </div>
+		    `);
+		}
+
+		document.write('</div>');
+	}
+	document.write('</div>');
+</script>
+
+</body>
+</html>
+
