@@ -13,14 +13,29 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 50px;
+            margin-top: 20px;
+        }
+        
+        .title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .round {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 10px;
         }
 
         .character img {
             width: 200px;
             height: 200px;
             border-radius: 50%;
-            margin-bottom: 20px;
+            margin-top: 22px;
+            margin-bottom: 1px;
+            margin-left: 12px;
+            margin-right: 14px;
         }
 
         .character-name {
@@ -28,12 +43,6 @@
             font-weight: bold;
         }
         
-        .round {
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-
 		.character-container {
 			display: flex;  /* Use flexbox to arrange items horizontally */
 		}
@@ -50,12 +59,14 @@
         }
 
         .button {
-            padding: 10px;
-            margin: 5px;
-            background-color: #4caf50;
-            color: white;
+			font-weight: bold;
+		    font-size: 15px;
+     	    padding: 12px;
+            margin: 9px;
+            background-color: yellow;
+            color: black;
             border: none;
-            border-radius: 5px;
+            border-radius: 13px;
             cursor: pointer;
         }
     </style>
@@ -75,7 +86,7 @@ let year = parseInt(localStorage.getItem('year')) || 2020;
 let semester = parseInt(localStorage.getItem('semester')) || 1;
 
 document.write(`
-	<div class="character-name"> A new semester begins! </div>
+	<div class="title"> A new semester begins! </div>
 	<div class="round"> ${year}/${semester} </div>
 `); 
 		
@@ -128,7 +139,6 @@ while (TempAliveCharacters.length > 0) {
     displayCharacterInfo(selectedCharacters, event);
     document.write('<br>');
 }
-
 
 localStorage.setItem('DeadCharacters', JSON.stringify(DeadCharacters));
 

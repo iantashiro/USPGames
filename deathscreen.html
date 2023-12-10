@@ -14,9 +14,20 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 50px;
+            margin-top: 20px;
         }
-
+        
+        .title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .round {
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
         .dead-character img {
 			width: 100px;
 			height: 100px;
@@ -29,6 +40,35 @@
             font-size: 18px;
             margin-bottom: 20px;
         }
+        
+        .button-container {
+            margin-top: 20px;
+        }
+        
+        .F-button {
+        	width: 50px;
+      		font-weight: bold;
+	        font-size: 42px;
+            padding: 1px;
+            margin: 1px;
+            background-color: yellow;
+            color: black;
+            border: none;
+            border-radius: 9px;
+            cursor: pointer;
+        }
+        
+        .continue-button {
+			font-weight: bold;
+      		font-size: 15px;
+            padding: 12px;
+            margin: 9px;
+            background-color: yellow;
+            color: black;
+            border: none;
+            border-radius: 13px;
+            cursor: pointer;
+        }
     </style>
     <script src="constants.js"></script>
     <script src="transition.js"></script>
@@ -40,11 +80,6 @@
 <script>
 let year = parseInt(localStorage.getItem('year')) || 2020;
 let semester = parseInt(localStorage.getItem('semester')) || 1;
-
-document.write(`
-	<div class="character-name"> Cannon shots can be heard in the distance. </div>
-	<div class="round"> ${year}/${semester} </div>
-`); 
 
 const deadEvents = [
 	"{P1} is bleeding demised.",
@@ -79,20 +114,35 @@ function getRandomEvent(characterNames) {
 // Retrieve DeadCharacters and DeadEvents from localStorage
 let DeadCharacters = JSON.parse(localStorage.getItem('DeadCharacters')) || [];
 
-// Display a random event for each dead character
-for (const character of DeadCharacters) {
-    event = getRandomEvent([character]);  // Wrap character in an array
-    displayDeadCharacterInfo(character, event);
-}
+if (DeadCharacters.length > 0) {
+	document.write(`
+		<div class="title"> Cannon shots can be heard in the distance. </div>
+		<div class="round"> ${year}/${semester} </div>
+	`); 
+	// Display a random event for each dead character
+	for (const character of DeadCharacters) {
+		event = getRandomEvent([character]);  // Wrap character in an array
+		displayDeadCharacterInfo(character, event);
+	}
 
-// Remove DeadCharacters from localStorage
-localStorage.removeItem('DeadCharacters');
+	// Remove DeadCharacters from localStorage
+	localStorage.removeItem('DeadCharacters');
 
-document.write(`
-	<div class="button-container">
- 	   <button class="button" onclick=" PressF()"> F </button>
-	</div>
-`);
+	document.write(`
+		<div class="button-container">
+	 	   <button class="F-button" onclick="PressF()"> F </button>
+		</div>
+	`);
+	} else {
+	document.write(`
+		<div class="title"> Nobody died or lost their jobs this semester! </div>
+		<div class="round"> ${year}/${semester} </div>
+		
+		<div class="button-container">
+	 	   <button class="continue-button" onclick="PressF()"> Continue </button>
+		</div>
+	`); 
+	}
 
 let AliveCharacters = JSON.parse(localStorage.getItem('AliveCharacters'));
 function PressF() {
