@@ -75,31 +75,32 @@ let year = parseInt(localStorage.getItem('year')) || 2020;
 let semester = parseInt(localStorage.getItem('semester')) || 1;
 
 const selectedArena = arenaList[Math.floor(Math.random() * arenaList.length)];
-
+console.log(selectedArena)
 switch (selectedArena) {
         case "covid":
         	document.write(`
 				<div class="character-name"> COVID-19 outbreak! </div>
 				<div class="round"> ${year}/${semester} </div>
 			`); 
-	
+			break;
         case "jair":
         	document.write(`
 				<div class="character-name"> Jair declares a dictatorship! </div>
 				<div class="round"> ${year}/${semester} </div>
 			`); 
-			
+			break;
 		case "budget":
         	document.write(`
 				<div class="character-name"> Budget cuts!  </div>
 				<div class="round"> ${year}/${semester} </div>
 			`); 
-			
+			break;
 		case "strike":
         	document.write(`
 				<div class="character-name"> A students' strike begins! </div>
 				<div class="round"> ${year}/${semester} </div>
 			`); 
+			break;
 	}
 	
 updateSemesterInfo()
@@ -156,21 +157,23 @@ while (TempAliveCharacters.length > 0) {
 }
 
 
-
-
 let p_arena = parseFloat(localStorage.getItem('p_arena')) ;
 let p_comp = parseFloat(localStorage.getItem('p_comp')) ;
 console.log(p_arena)
 console.log(p_comp)
 document.write(`
-    	<div class="button-container">
-     	   <button class="button" onclick="Proceed()">Proceed</button>
-		</div>
+	<div class="button-container">
+ 	   <button class="button" onclick="Proceed()">Proceed</button>
+	</div>
 `);
 
 
 function Proceed() {
+    if (Object.keys(AliveCharacters).length == 1) {
+        window.location.href = 'endscreen.html';
+    } else {
     eventTypeSelector();
+    }
 }
 
      
