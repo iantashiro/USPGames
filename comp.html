@@ -81,7 +81,7 @@ document.write(`
 
 updateSemesterInfo()
 
-// Retrieve TAliveCharacters from localStorage
+let DeadCharacters = JSON.parse(localStorage.getItem('DeadCharacters')) || [];
 let AliveCharacters = JSON.parse(localStorage.getItem('AliveCharacters')) || { ...characterIDMap };
 
 const aliveCharacterKeys = Object.keys(AliveCharacters);
@@ -118,10 +118,9 @@ while (TempAliveCharacters.length > 0) {
 			const characterIndex = aliveCharacterKeys.indexOf(character);
 			if (characterIndex !== -1) {
 				delete AliveCharacters[character];
+				DeadCharacters.push(character);
 			}
 		}
-
-		// Save the updated AliveCharacters to localStorage
 		localStorage.setItem('AliveCharacters', JSON.stringify(AliveCharacters));
 	}
     displayCharacterInfo(selectedCharacters, event);
@@ -130,6 +129,7 @@ while (TempAliveCharacters.length > 0) {
     document.write('<br>');
 }
 
+localStorage.setItem('DeadCharacters', JSON.stringify(DeadCharacters));
 
 
 
@@ -145,13 +145,8 @@ document.write(`
 
 
 function Proceed() {
-    if (Object.keys(AliveCharacters).length == 1) {
-        window.location.href = 'endscreen.html';
-    } else {
-    eventTypeSelector();
-    }
+	window.location.href = 'deathscreen.html';
 }
-
 
      
 </script>

@@ -105,20 +105,14 @@ switch (selectedArena) {
 	
 updateSemesterInfo()
 
-// Retrieve TAliveCharacters from localStorage
+let DeadCharacters = JSON.parse(localStorage.getItem('DeadCharacters')) || [];
 let AliveCharacters = JSON.parse(localStorage.getItem('AliveCharacters')) || { ...characterIDMap };
 
 const aliveCharacterKeys = Object.keys(AliveCharacters);
 const TempAliveCharacters = Object.keys(AliveCharacters);
-
 shuffleArray(TempAliveCharacters);
 
-
 while (TempAliveCharacters.length > 0) {
-    if (Object.keys(AliveCharacters).length === 1) {
-        break;  // Exit the loop to prevent further iterations
-    }
-
     let numCharacters = Math.min(getRandomNumber(1, 3), TempAliveCharacters.length);
 
     // If there are 3 or 2 characters remaining, make sure at least one stays alive
@@ -144,10 +138,9 @@ while (TempAliveCharacters.length > 0) {
 			const characterIndex = aliveCharacterKeys.indexOf(character);
 			if (characterIndex !== -1) {
 				delete AliveCharacters[character];
+				DeadCharacters.push(character);
 			}
 		}
-
-		// Save the updated AliveCharacters to localStorage
 		localStorage.setItem('AliveCharacters', JSON.stringify(AliveCharacters));
 	}
     displayCharacterInfo(selectedCharacters, event);
@@ -157,10 +150,13 @@ while (TempAliveCharacters.length > 0) {
 }
 
 
+localStorage.setItem('DeadCharacters', JSON.stringify(DeadCharacters));
+
 let p_arena = parseFloat(localStorage.getItem('p_arena')) ;
 let p_comp = parseFloat(localStorage.getItem('p_comp')) ;
 console.log(p_arena)
 console.log(p_comp)
+
 document.write(`
 	<div class="button-container">
  	   <button class="button" onclick="Proceed()">Proceed</button>
@@ -169,11 +165,7 @@ document.write(`
 
 
 function Proceed() {
-    if (Object.keys(AliveCharacters).length == 1) {
-        window.location.href = 'endscreen.html';
-    } else {
-    eventTypeSelector();
-    }
+	window.location.href = 'deathscreen.html';
 }
 
      

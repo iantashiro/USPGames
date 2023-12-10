@@ -14,7 +14,7 @@ function replacePronouns(characterName, sentence) {
     if (characterID !== undefined) {
         // Update pronouns based on character gender, in the order defined in constants.js
         if (characterID === 3 || characterID === 7 || characterID === 8
-        	|| characterID === 30 || characterID === 32|| characterID === 32) {
+        	|| characterID === 30 || characterID === 31|| characterID === 32) {
             pronouns["{he}"] = "she";
             pronouns["{his}"] = "her";
             pronouns["{him}"] = "her";

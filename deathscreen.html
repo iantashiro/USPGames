@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Death Screen</title>
+    <style>
+        body {
+            background-color: black;
+            color: yellow;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .dead-character img {
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			margin-bottom: 20px;
+			filter: grayscale(100%); /* Apply grayscale filter for black and white effect */
+	    }
+
+        .dead-event {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+    </style>
+    <script src="constants.js"></script>
+    <script src="transition.js"></script>
+    
+</head>
+
+<body>
+
+<script>
+let year = parseInt(localStorage.getItem('year')) || 2020;
+let semester = parseInt(localStorage.getItem('semester')) || 1;
+
+document.write(`
+	<div class="character-name"> Cannon shots can be heard in the distance. </div>
+	<div class="round"> ${year}/${semester} </div>
+`); 
+
+const deadEvents = [
+	"{P1} is bleeding demised.",
+	"{P1}'s passed on.",
+	"{P1} is no more.",
+	"{P1} has ceased to be.",
+	"{P1} has expired and gone to meet its maker.",
+	"This is a late {P1}.",
+	"{P1} is a stiff, bereft of life, and rests in peace.",
+	"{P1} is pushing up the daisies.",
+	"{P1} rang down the curtain and joined the choir invisible.",
+	"This is an ex-{P1}."
+]
+	
+function getRandomEvent(characterNames) {
+	let eventList = deadEvents;
+
+    const randomIndex = Math.floor(Math.random() * eventList.length);
+    const eventTemplate = eventList[randomIndex];
+
+    const formattedEvent = eventTemplate.replace(/\{P\d\}/g, match => {
+        const placeholderIndex = parseInt(match.charAt(2)) - 1;
+        return characterNames[placeholderIndex];
+    });
+
+    // Replace pronouns in the formatted event
+    const eventWithPronouns = replacePronouns(characterNames[0], formattedEvent);
+    return eventWithPronouns;
+}
+
+	
+// Retrieve DeadCharacters and DeadEvents from localStorage
+let DeadCharacters = JSON.parse(localStorage.getItem('DeadCharacters')) || [];
+
+// Display a random event for each dead character
+for (const character of DeadCharacters) {
+    event = getRandomEvent([character]);  // Wrap character in an array
+    displayDeadCharacterInfo(character, event);
+}
+
+// Remove DeadCharacters from localStorage
+localStorage.removeItem('DeadCharacters');
+
+document.write(`
+	<div class="button-container">
+ 	   <button class="button" onclick=" PressF()"> F </button>
+	</div>
+`);
+
+let AliveCharacters = JSON.parse(localStorage.getItem('AliveCharacters'));
+function PressF() {
+	if (Object.keys(AliveCharacters).length == 1) {
+		window.location.href = 'endscreen.html';
+	} else {
+		eventTypeSelector();
+	}
+}
+</script>
+
+</body>
+
+</html>
+

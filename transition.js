@@ -1,5 +1,35 @@
 // transition.js
 
+function replacePronouns(characterName, sentence) {
+    const pronouns = {
+        "{he}": "he",
+        "{his}": "his",
+        "{him}": "him",
+        "{himself}": "himself"
+    };
+
+    const characterID = characterIDMap[characterName];
+
+
+    if (characterID !== undefined) {
+        // Update pronouns based on character gender, in the order defined in constants.js
+        if (characterID === 3 || characterID === 7 || characterID === 8
+        	|| characterID === 30 || characterID === 31|| characterID === 32) {
+            pronouns["{he}"] = "she";
+            pronouns["{his}"] = "her";
+            pronouns["{him}"] = "her";
+            pronouns["{himself}"] = "herself";
+        }
+    }
+
+    // Replace pronouns in the sentence
+    Object.keys(pronouns).forEach(key => {
+        const regex = new RegExp(`${key}`, "gi");
+        sentence = sentence.replace(regex, pronouns[key]);
+    });
+
+    return sentence;
+}
 
 // Function to update the semester information in the HTML
 function updateSemesterInfo() {
@@ -64,5 +94,16 @@ function eventTypeSelector() {
     }
 }
 
+
+
+
+function displayDeadCharacterInfo(character, event) {
+    document.write(`
+        <div class="dead-character">
+            <img src="${characterImages[character]}.jpg" alt="${character}">
+            <div class="dead-event">${event}</div>
+        </div>
+    `);
+}
 
     

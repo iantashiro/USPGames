@@ -82,15 +82,12 @@ document.write(`
 
 updateSemesterInfo()
 
-
-// Retrieve TAliveCharacters from localStorage
+let DeadCharacters = JSON.parse(localStorage.getItem('DeadCharacters')) || [];
 let AliveCharacters = JSON.parse(localStorage.getItem('AliveCharacters')) || { ...characterIDMap };
 
 const aliveCharacterKeys = Object.keys(AliveCharacters);
 const TempAliveCharacters = Object.keys(AliveCharacters);
-
 shuffleArray(TempAliveCharacters);
-console.log(AliveCharacters);
 
 while (TempAliveCharacters.length > 0) {
     let numCharacters = Math.min(getRandomNumber(1, 3), TempAliveCharacters.length);
@@ -104,7 +101,7 @@ while (TempAliveCharacters.length > 0) {
 
     const selectedCharacters = TempAliveCharacters.splice(0, numCharacters);
     
-    let p = 1 //Math.random();
+    let p = Math.random();
 	if (TempAliveCharacters.length == 1) {
 		p = 1; // last professor always survives to avoid an infinite loop
 	}
@@ -119,19 +116,21 @@ while (TempAliveCharacters.length > 0) {
 			const characterIndex = aliveCharacterKeys.indexOf(character);
 			if (characterIndex !== -1) {
 				delete AliveCharacters[character];
+				DeadCharacters.push(character);
 			}
 		}
-
 		// Save the updated AliveCharacters to localStorage
 		localStorage.setItem('AliveCharacters', JSON.stringify(AliveCharacters));
+		//localStorage.setItem('DeadCharacters', JSON.stringify(DeadCharacters));
+
 	}
 
     displayCharacterInfo(selectedCharacters, event);
-
-    // Add a line break between sets of characters
     document.write('<br>');
 }
 
+
+localStorage.setItem('DeadCharacters', JSON.stringify(DeadCharacters));
 
 
 
@@ -147,11 +146,7 @@ document.write(`
 
 
 function Proceed() {
-    if (Object.keys(AliveCharacters).length == 1) {
-        window.location.href = 'endscreen.html';
-    } else {
-    eventTypeSelector();
-    }
+	window.location.href = 'deathscreen.html';
 }
 
      
