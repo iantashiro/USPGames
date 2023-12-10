@@ -52,48 +52,47 @@
 <body>
 
 <script>
-// reads selected character's name from url
-const urlParams = new URLSearchParams(window.location.search);
-const characterName = decodeURIComponent(urlParams.get('name'));
 
-// global storage for the character's stats so it can be loaded in other pages
-window.characterImage = characterImages[characterName];
-window.characterID = characterIDMap[characterName];
-window.characterRP = RPlist[characterID];
-window.characterHP = HPlist[characterID];
+const AliveCharacters = JSON.parse(localStorage.getItem('AliveCharacters'));
+console.log(AliveCharacters)
+const characterCount = Object.keys(AliveCharacters).length;
+
+if (characterCount === 1) {
+    // Get the name of the remaining character
+    remainingCharacterName = Object.keys(AliveCharacters);
+} else {
+    // Handle the case where there is an unexpected number of characters
+    document.write(`
+    <div class="character-name"> More than one professor still on the race!  </div>
+
+    	<div class="button-container">
+		    <button class="button" onclick="keepPlaying()"> Keep playing </button>
+		</div>
+    </div>
+`);
+}
+
+
 
 document.write(`
+    <div class="character-name"> The Nobel Prize goes to... </div>
+
     <div class="character">
-        <img src="${characterImage}" alt="${characterName}">
-    	<div class="character-name">${characterName}</div>
-    	<div class="attributes">
-            <p>RP: ${characterRP}</p>
-            <p>HP: ${characterHP}</p>
-    	</div>
+        <img src="${characterImages[remainingCharacterName]}" alt="${remainingCharacterName}">
+        <div class="character-name">${remainingCharacterName}</div>
     	<div class="button-container">
-     	   <button class="button" onclick="confirmCharacter()">Confirm Character</button>
-		    <button class="button" onclick="goBack()">Go Back</button>
+		    <button class="button" onclick="goBack()"> Play again? </button>
 		</div>
     </div>
 `);
 
-//let AliveCharacters = characterIDMap;
-let AliveCharacters = { ...characterIDMap };
-localStorage.setItem('AliveCharacters', JSON.stringify(AliveCharacters));
-
-localStorage.setItem('year', 2020);
-localStorage.setItem('semester', 1);
-localStorage.setItem('p_arena', -0.20);
-localStorage.setItem('p_comp', 0.20);
-localStorage.setItem('death_rate', 0.33);
-
-
-function confirmCharacter() {
-    eventTypeSelector();
-}
 
 function goBack() {
     window.location.href = "characters.html";
+}
+
+function keepPlaying() {
+    eventTypeSelector();
 }
 
      
