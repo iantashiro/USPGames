@@ -4,4 +4,5 @@ Inspired by [The Hunger Games simulator](https://brantsteele.net/hungergames/rea
 
 Doau™ inc. © all rights reserved 
 
-![rdn6mgA](https://github.com/iantashiro/USPGames/assets/65839626/98ec6a87-244e-4c47-a852-bef207ccc6e3)
+<img src="https://imgur.com/rdn6mgA.png " width="420" height="420">
+
