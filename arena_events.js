@@ -127,21 +127,23 @@ const covidSurvival = [
 const covidFatal1 = [
 	"{P1} returns from an international conference and perishes while on quarentine.",
 	"{P1} quits {his} job and starts selling toilet paper stolen from the university.",
-    "{P1} refuses to take the vaccine or even wear a mask and becomes an outcast among colleagues.",
-    ]
+	"{P1} refuses to take the vaccine or even wear a mask and becomes an outcast among colleagues.",
+	"{P1} gets mashed into a pulp by a group of anti-vaxxers, who get covid from {him} in the process and die painfully."
+	"{P1} takes chloroquine and dies due to an inconsistency that {his} brain could not process between this ridiculously dumb decision and {his} profession as a scientist.
 
+    ]
 const covidFatal2 = [
 	"{P1} is tested positive and runs as fast as {he} can to cough direclty into {P2}'s face, {his} secretly self-declared nemesis.",
 	"{P1} and {P2} refuse to wear a mask and die due to some kind of weird cosmic karma or whatever.",
-    "{P1} and {P2} get mad their classes were cancelled and organize a mask-burning protest on campus.",
-    "{P1} and {P2} join an anti-vax group and lose their jobs.",
+	"{P1} and {P2} get mad their classes were cancelled and organize a mask-burning protest on campus.",
+	"{P1} and {P2} join an anti-vax group and lose their jobs.",
     ]
     
 const covidFatal3 = [
 	"{P1} is tested positive and goes around offerering a handshake to {his} enemies. {P2} and {P3} were among the ones who accepted.",
 	"{P1} and {P2} contract the virus from {P3}, who is the sole survivor of the group, but dies anyway a week later from a lack of toilet paper.",
 	"{P1} coughs on a meeting with {P2} and {P3}.",
-    "{P1} hosts a COVID-themed party, inviting {P2} and {P3} for an nice evening of shared viruses.",
+    	"{P1} hosts a COVID-themed party, inviting {P2} and {P3} for an nice evening of shared viruses.",
     ]
 
 
