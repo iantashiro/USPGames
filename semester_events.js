@@ -177,8 +177,9 @@ const FatalEvents1 = [
 	"{P1} quits {his} job to follow {his} childhood dream of becoming an iceberg hunter.",
 	"{P1} buys a brand new chair, but it is too soft."
 	"{P1} steps on branch.",
-	"{P1} uses commas as decimal separators on a simulation and wastes 6 months of the university's cluster's processing time."
-		
+	"{P1} uses commas as decimal separators on a simulation and wastes 6 months of the university's cluster's processing time.",
+	"{P1} publishes a perfectly consistent theory of everything, except for the fact that tg(x) wasn't a function g(x) multiplied by a parameter t.",
+	"{P1} is forced to retire due to excessive complaints from the students.",
 ]
 
 	
