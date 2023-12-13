@@ -44,39 +44,41 @@ function getRandomEvent(fatal, characterNames) {
 
 
 const SafeEvents1 = [
-    "{P1} finds out {he} is a sleeping cylon agent.",
-    "{P1} sees a kitten stuck in a tree. Then the kitten jumped off and it hung itself.",
-    "{P1}'s got a theory, some kid is dreaming, and we're inside {his} wacky broadway nightmare.",
-    "{P1} identifies as a pudding.",
-    "{P1} can't catch a break and catches a cold.",
-    "{P1} publishes a controversial paper.",
-    "{P1} has a brilliant idea, but doesn't write it down on a napkin because there was no napkin around.",
-    "{P1} is stuck.",
-    "{P1} receives a boatload of money from FAPESP to organize an event for no reason.",
-    "{P1} throws the course syllabus out the window.",
-    "{P1} uploads last semester's grades on JupiterWeb.",
-    "{P1} questions {his} sanity.",
-    "{P1} gets new pawns to move around as {he} pleases.",
-    "{P1} is never satisfied where {he} is....Only the children know what they’re looking for.",
-    "{P1} hurts a student's feelings.",
-    "{P1} teaches {his} students they're not children anymore.",
-    "{P1} needs answers like a fish needs a bicycle.",
-    "{P1} gets a FAPESP scholarship for {his} student.",
-    "{P1} creates a microverse to power {his} car battery.",
-    "{P1} claims to be omniscient.",
-    "{P1} invents the universe to make an apple pie from scratch.",
-    "{P1} declares war on the moon, even though it's round and has no doors.",
-    "{P1} wakes up with a pineapple on {his} nightstand, and no memory of the night before.",
-    "{P1} throws a chalk directly at a student's forehead.",
-    "{P1}'s spends the semester ruminating, and by 'ruminating' I mean 'pondering', not 'chewing cud.'",
-    "{P1} prays that there's intelligent life somewhere out in space, cause there's bugger all down here on Earth.",
-    "{P1} is chewing on life's gristle, but doesn't grumble, and gives a whistle. And this helps things turn out for the best.",
-    "{P1}'s life seems jolly rotten. There's something he's forgotten, and that's to laugh and smile and dance and sing.",
-    "{P1} is feeling in the dumps, but is not silly chumps, {he} just purses {his} lips and whistles, that's the thing.",
-    "{P1} watches a dog cross the street and wonders: what is a dog really? Is it a wave, or a collection of particles?",
-    "One of the things {P1} had always found hardest to understand about humans was their habit of continually stating and repeating the very obvious.",
-    "{P1} talks to a computer at great length and explains {his} view of the Universe to it. Then it commits suicide.",
-    "{P1} didn't want to be human, {he} wanted to see gamma rays, hear X-rays, smell dark matter."]
+	"{P1} finds out {he} is a sleeping cylon agent.",
+	"{P1} sees a kitten stuck in a tree. Then the kitten jumped off and it hung itself.",
+	"{P1}'s got a theory, some kid is dreaming, and we're inside {his} wacky broadway nightmare.",
+	"{P1} identifies as a pudding.",
+	"{P1} can't catch a break and catches a cold.",
+	"{P1} publishes a controversial paper.",
+	"{P1} has a brilliant idea, but doesn't write it down on a napkin because there was no napkin around.",
+	"{P1} is stuck.",
+	"{P1} receives a boatload of money from FAPESP to organize an event for no reason.",
+	"{P1} throws the course syllabus out the window.",
+	"{P1} uploads last semester's grades on JupiterWeb.",
+	"{P1} questions {his} sanity.",
+	"{P1} gets new pawns to move around as {he} pleases.",
+	"{P1} is never satisfied where {he} is....Only the children know what they’re looking for.",
+	"{P1} hurts a student's feelings.",
+	"{P1} teaches {his} students they're not children anymore.",
+	"{P1} needs answers like a fish needs a bicycle.",
+	"{P1} gets a FAPESP scholarship for {his} student.",
+	"{P1} creates a microverse to power {his} car battery.",
+	"{P1} claims to be omniscient.",
+	"{P1} invents the universe to make an apple pie from scratch.",
+	"{P1} declares war on the moon, even though it's round and has no doors.",
+	"{P1} wakes up with a pineapple on {his} nightstand, and no memory of the night before.",
+	"{P1} throws a chalk directly at a student's forehead.",
+	"{P1}'s spends the semester ruminating, and by 'ruminating' I mean 'pondering', not 'chewing cud.'",
+	"{P1} prays that there's intelligent life somewhere out in space, cause there's bugger all down here on Earth.",
+	"{P1} is chewing on life's gristle, but doesn't grumble, and gives a whistle. And this helps things turn out for the best.",
+	"{P1}'s life seems jolly rotten. There's something he's forgotten, and that's to laugh and smile and dance and sing.",
+	"{P1} is feeling in the dumps, but is not silly chumps, {he} just purses {his} lips and whistles, that's the thing.",
+	"{P1} watches a dog cross the street and wonders: what is a dog really? Is it a wave, or a collection of particles?",
+	"One of the things {P1} had always found hardest to understand about humans was their habit of continually stating and repeating the very obvious.",
+	"{P1} talks to a computer at great length and explains {his} view of the Universe to it. Then it commits suicide.",
+	"{P1} didn't want to be human, {he} wanted to see gamma rays, hear X-rays, smell dark matter.",
+	"{P1} discards radioactive waste on {his} neighbours yard.",
+]
     
     
 const SafeEvents2 = [
@@ -168,7 +170,16 @@ const FatalEvents1 = [
 	"{P1} finds out {he} has lung cancer and dies from building a drug empire.",
 	"{P1} forgets to bring a towel on a trip to participate in a conference and suffers the consequences.",
 	"{P1} morally harasses students during a recorded online class and loses {his} job.",
-	"{P1} publishes satellite data showing a significant increase in deforestation in the Amazon rainforest and gets fired by a brainless little brat."]
+	"{P1} publishes satellite data showing a significant increase in deforestation in the Amazon rainforest and gets fired by a brainless little brat."
+	"{P1} forgets to do {his} Spanish lesson and has to beg for {his} life in Spanish.",
+	"{P1} breaks {his} Spanish streak, so the mightly green owl breaks {his} legs.",
+	"{P1} finds out {he}'s an NPC from a computer game and gets fired after wasting {his} research grant trying to prove it."
+	"{P1} quits {his} job to follow {his} childhood dream of becoming an iceberg hunter.",
+	"{P1} buys a brand new chair, but it is too soft."
+	"{P1} steps on branch.",
+		
+]
+
 	
 const FatalEvents2 = [
 	"{P1} conducts an experiment to find out if a swallow can fly with a coconut. The coconut gets dropped on {P2}'s head, who dies instantly.",
@@ -188,7 +199,14 @@ const FatalEvents2 = [
 	"{P1} stays up all night trying to solve a problem. {he} finally solves it at 2 a.m. {P2} was the problem.",
 	"{P1} decides to take the stairs to avoid {P2}'s tragic fate of death by elevator, but dies from falling down the stairs anyway.",
 	"{P1} heroically dies trying to save {P2} from a dog attack. Trying.",
-	"{P1} exposes {P2} as a bolsominion, who immediately loses all credibility as a scientist.",]
+	"{P1} exposes {P2} as a bolsominion, who immediately loses all credibility as a scientist.",
+	"{P1} 'accidentally' discards radioactive waste into the garbage bin of {P2}'s department and gets caught in 4K after {P2}'s demise.",
+	"{P1} hides radioactive waste under {P2}'s bookcase.",
+	"{P1} and {P2} get hit by leaf. Just regular leaf.",
+	"{P1} inflicts severe emotional damage on {P2} and dies of guilt.",
+	"{P1} offers snacks to {P2}. Snacks too dry.",
+	]
+
 	
 const FatalEvents3 = [
 	"{P1}, {P2} and {P3} work together to discover a new revolutionary source of energy, and get killed by the oil industry magnats.",
@@ -200,4 +218,9 @@ const FatalEvents3 = [
 	"{P1} takes out the Holy pin of the Holy Hand Grenade, counts 'One! Two! Five!' and dies in the explosion, together with {P2} and {P3}.",
 	"{P1} fails to forward a chain e-mail to 10 close friends and dies, taking {P2} and {P3} with {him}.",
 	"{P1} builds a death ray to kill {P2}, but it overloads, killing {P3} too.",
-	"USPNET gains consciousness and erases the academic history of its potential deactivators: {P1}, {P2} and {P3}."]
+	"USPNET gains consciousness and erases the academic history of its potential deactivators: {P1}, {P2} and {P3}."
+	"{P1} realizes {he}'s actually just a computer game npc and decides to kill all {his} opponents to win, but quickly gets arrested after murdering {P2} and {P3}.",
+	"{P1} realizes {he}'s actually just a computer game npc and decides to kill all {his} opponents to win. {P2} and {P3} are brutally murdered before {P1} is sent to an asylum.",
+	"{P1}, {P2} and {P3} die out of hunger in the university restaurant line."
+	
+	]
