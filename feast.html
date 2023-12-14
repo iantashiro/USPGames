@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> USP Games </title>
+    
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    
+    <script src="constants.js"></script>
+    <script src="transition.js"></script>
+    <script src="feast_events.js"></script>
+    <script src="math.js"></script>
+
+</head>
+<body>
+
+<script>
+let death_rate =  0.66;
+let year = parseInt(localStorage.getItem('year')) || 2020;
+let semester = parseInt(localStorage.getItem('semester')) || 1;
+
+document.write(`
+	<div class="character-name"> A huge feast begins! </div>
+	<div class="round"> ${year}/${semester} </div>
+`); 
+
+updateSemesterInfo()
+
+let DeadCharacters = JSON.parse(localStorage.getItem('DeadCharacters')) || [];
+let AliveCharacters = JSON.parse(localStorage.getItem('AliveCharacters')) || { ...characterIDMap };
+
+const aliveCharacterKeys = Object.keys(AliveCharacters);
+const TempAliveCharacters = Object.keys(AliveCharacters);
+
+shuffleArray(TempAliveCharacters);
+console.log(AliveCharacters);
+
+while (TempAliveCharacters.length > 0) {
+    let numCharacters = Math.min(getRandomNumber(1, 3), TempAliveCharacters.length);
+
+    // If there are 3 or 2 characters remaining, make sure at least one stays alive
+    if (TempAliveCharacters.length === 3 && numCharacters === 3) {
+        numCharacters = 2;
+    } else if (TempAliveCharacters.length === 2) {
+        numCharacters = 1;
+    }
+    
+    const selectedCharacters = TempAliveCharacters.splice(0, numCharacters);
+    
+    let p = Math.random();
+
+	if (TempAliveCharacters.length == 1) {
+		p = 1; // last professor always survives to avoid an infinite loop
+	}
+	
+	if (p > death_rate) {
+    	event = getRandomEvent(0, selectedCharacters);
+	}
+	else if (p < death_rate) {
+		event = getRandomEvent(1, selectedCharacters);
+		// permanently remove selectedCharacters from AliveCharacters
+		for (const character of selectedCharacters) {
+			const characterIndex = aliveCharacterKeys.indexOf(character);
+			if (characterIndex !== -1) {
+				delete AliveCharacters[character];
+				DeadCharacters.push(character);
+			}
+		}
+		localStorage.setItem('AliveCharacters', JSON.stringify(AliveCharacters));
+	}
+    displayCharacterInfo(selectedCharacters, event);
+
+    // Add a line break between sets of characters
+    document.write('<br>');
+}
+
+localStorage.setItem('DeadCharacters', JSON.stringify(DeadCharacters));
+
+
+
+let p_arena = parseFloat(localStorage.getItem('p_arena')) ;
+let p_comp = parseFloat(localStorage.getItem('p_comp')) ;
+console.log(p_arena)
+console.log(p_comp)
+document.write(`
+	<div class="button-container">
+		<button class="button" onclick="Proceed()">Proceed</button>
+	</div>
+`);
+
+
+function Proceed() {
+	window.location.href = 'deathscreen.html';
+}
+
+     
+</script>
+
+</body>
+</html>
